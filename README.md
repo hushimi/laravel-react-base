@@ -138,3 +138,60 @@ submitForm("/api/endpoint");
 5. web.php に読み込ませる
 6. app/Http/Controllers/Auth を app/Http/Controllers/Admin/Auth にコピー
 7. Controller の名前空間修正
+8. login 前、login 後のリダイレクト設定(config/app.php)、Middleware の追加
+9. Mail の日本語化
+
+## tailwind css class too long
+
+```javascript
+import clsx from "clsx";
+
+function Button() {
+    return (
+        <button
+            className={clsx(
+                "flex items-center justify-center",
+                "rounded-md bg-blue-500 px-4 py-2",
+                "text-sm font-medium text-white",
+                "hover:bg-blue-600",
+                "focus-visible:outline focus-visible:outline-2",
+                "focus-visible:outline-offset-2 focus-visible:outline-blue-500"
+            )}
+        >
+            Click Me
+        </button>
+    );
+}
+```
+
+# 使用 JS ライブラリ
+
+-   Shadcn/ui
+-   clsx(長いクラス名を見やすくする)
+
+# Shadcn/ui メモ
+
+-   [Reffect shadcn/ui 解説](https://reffect.co.jp/react/shadcn-react)
+-   Slot:Merges its props onto its immediate child. As Child を true にする
+-   CVA(class-variance-authority Library)
+
+```txt
+cva は Class Variant Authority の略で’class-variance-authority’ライブラリから import している関数です。
+Button コンポーネントの variant の値を”outline”, size の値を”lg”に設定するとボタンのデザインが変更になったのは
+cva の設定を行っているためです。
+
+cva 関数 の第一引数にはベースの class, 第二引数には options を設定することができます。
+options には variants, compoundVariants, defaultVariatns のオブジェクトを設定することができます。
+variants オブジェクトの中では選択できる値を定義します。
+引数に何も指定しない場合は defaultVariants の値が利用されます。
+
+compoundVariants は intent の値が primary, size に medium が指定された場合に class で設定した値が追加されます。
+```
+
+-   twmerge, clsx
+
+```javascript
+// clsx だけではなコンフリクトした class を merge することはできないので
+// tailwind-merge と一緒に利用することで以下のようにコンフリクトのない class にすることができます。
+twMerge(clsx("px-4 py-2", "p-3", { "bg-red-500": true }));
+```
