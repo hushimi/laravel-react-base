@@ -9,7 +9,7 @@ class TopController extends Controller
 {
     public function index ()
     {
-        return Inertia::render('Top');
+        return Inertia::render('Top', ['greeting' => 'hello']);
     }
 
 }

@@ -15,6 +15,7 @@ use Inertia\Inertia;
 //     ]);
 // })->name('root');
 
+// Topページ
 Route::get('/', [TopController::class, 'index'])
     ->name('root');
 
