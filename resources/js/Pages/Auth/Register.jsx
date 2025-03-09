@@ -5,7 +5,7 @@ import TextInput from '@/Components/TextInput';
 import GuestLayout from '@/Layouts/GuestLayout';
 import { Head, Link, useForm } from '@inertiajs/react';
 
-export default function Register() {
+const Register = () => {
     const { data, setData, post, processing, errors, reset } = useForm({
         name: '',
         email: '',
@@ -22,7 +22,7 @@ export default function Register() {
     };
 
     return (
-        <GuestLayout>
+        <>
             <Head title="Register" />
 
             <form onSubmit={submit}>
@@ -115,6 +115,10 @@ export default function Register() {
                     </PrimaryButton>
                 </div>
             </form>
-        </GuestLayout>
+        </>
     );
 }
+
+Register.layout = (page) => <GuestLayout children={page} />
+
+export default Register;

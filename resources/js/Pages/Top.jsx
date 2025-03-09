@@ -1,16 +1,21 @@
-import GuestLayout from '@/Layouts/GuestLayout';
 import { useEffect } from 'react';
+import { Head } from '@inertiajs/react';
+import GuestLayout from '@/Layouts/GuestLayout';
 
-export default function Top(props) {
+
+const Top = (props) => {
     useEffect(() => {
         console.log('Top page mounted')
     }, [])
 
     return (
         <>
-            <GuestLayout>
-                <h1>{props.greeting} InertiaJS</h1>
-            </GuestLayout>
+            <Head><title>Top</title></Head>
+            <h1>{props.greeting} InertiaJS</h1>
         </>
     )
 }
+
+Top.layout = (page) => <GuestLayout children={page} />
+
+export default Top

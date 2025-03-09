@@ -6,7 +6,7 @@ import TextInput from '@/Components/TextInput';
 import GuestLayout from '@/Layouts/GuestLayout';
 import { Head, Link, useForm } from '@inertiajs/react';
 
-export default function Login({ status, canResetPassword }) {
+const Login = ({ status, canResetPassword }) => {
     const { data, setData, post, processing, errors, reset } = useForm({
         email: '',
         password: '',
@@ -22,7 +22,7 @@ export default function Login({ status, canResetPassword }) {
     };
 
     return (
-        <GuestLayout>
+        <>
             <Head title="Log in" />
 
             {status && (
@@ -95,6 +95,10 @@ export default function Login({ status, canResetPassword }) {
                     </PrimaryButton>
                 </div>
             </form>
-        </GuestLayout>
+        </>
     );
 }
+
+Login.layout = (page) => <GuestLayout children={page} />
+
+export default Login;
