@@ -1,10 +1,12 @@
-import Checkbox from '@/Components/Checkbox';
-import InputError from '@/Components/InputError';
-import InputLabel from '@/Components/InputLabel';
-import PrimaryButton from '@/Components/PrimaryButton';
-import TextInput from '@/Components/TextInput';
 import GuestLayout from '@/Layouts/GuestLayout';
+import { cn } from "@/lib/utils"
 import { Head, Link, useForm } from '@inertiajs/react';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label";
+import { Button } from '@/Components/ui/button';
+import { Checkbox } from "@/components/ui/checkbox"
+import InputError from '@/Components/InputError';
 
 const Login = ({ status, canResetPassword }) => {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -31,70 +33,67 @@ const Login = ({ status, canResetPassword }) => {
                 </div>
             )}
 
-            <form onSubmit={submit}>
-                <div>
-                    <InputLabel htmlFor="email" value="Email" />
+            <Card className="mt-5 mx-auto border-none w-11/12 sm:w-3/5 bg-[#242629] text-[#94a1b2]">
+                <CardHeader>
+                    <CardTitle className="text-center text-[#fffffe] text-3xl">
+                        Login
+                    </CardTitle>
+                </CardHeader>
+                <form onSubmit={submit}>
+                    <CardContent>
+                        <div className="w-full lg:w-4/6 mx-auto">
+                            <Label htmlFor="email">Email</Label>
+                            <Input
+                                type="email"
+                                id="email"
+                                autoComplete="username"
+                                onChange={(e) => setData('email', e.target.value)}
+                            />
+                            <InputError message={errors.email} className="mt-2" />
+                        </div>
+                        <div className="w-full lg:w-4/6 mx-auto mt-4">
+                            <Label htmlFor="password">Password</Label>
+                            <Input
+                                type="password"
+                                id="password"
+                                autoComplete="new-password"
+                                onChange={(e) => setData('password', e.target.value)}
+                            />
+                            <InputError message={errors.password} className="mt-2" />
+                        </div>
+                    </CardContent>
 
-                    <TextInput
-                        id="email"
-                        type="email"
-                        name="email"
-                        value={data.email}
-                        className="mt-1 block w-full"
-                        autoComplete="username"
-                        isFocused={true}
-                        onChange={(e) => setData('email', e.target.value)}
-                    />
+                    <CardFooter className="w-full flex-col">
+                        <div className="flex items-center space-x-2 mb-3">
+                            <Checkbox id="remember"
+                                className="border-white"
+                                onChange={(e) =>
+                                    setData('remember', e.target.checked)
+                                }
+                            />
+                            <Label htmlFor="remember" className="cursor-pointer">Remember me</Label>
+                        </div>
+                        <Button className="bg-[#7f5af0] mx-auto" disabled={processing}>
+                            LOG IN
+                        </Button>
 
-                    <InputError message={errors.email} className="mt-2" />
-                </div>
+                        {canResetPassword && (
+                            <div className='mt-3'>
+                                <Link
+                                    href={route('password.request')}
+                                    className={cn(
+                                        "rounded-md",
+                                        "text-sm text-[#7f5af0] underline",
+                                    )}
+                                >
+                                    Forgot your password?
+                                </Link>
+                            </div>
+                        )}
+                    </CardFooter>
 
-                <div className="mt-4">
-                    <InputLabel htmlFor="password" value="Password" />
-
-                    <TextInput
-                        id="password"
-                        type="password"
-                        name="password"
-                        value={data.password}
-                        className="mt-1 block w-full"
-                        autoComplete="current-password"
-                        onChange={(e) => setData('password', e.target.value)}
-                    />
-
-                    <InputError message={errors.password} className="mt-2" />
-                </div>
-
-                <div className="mt-4 block">
-                    <label className="flex items-center">
-                        <Checkbox
-                            name="remember"
-                            checked={data.remember}
-                            onChange={(e) =>
-                                setData('remember', e.target.checked)
-                            }
-                        />
-                        <span className="ms-2 text-sm text-gray-600">
-                            Remember me
-                        </span>
-                    </label>
-                </div>
-
-                <div className="mt-4 flex items-center justify-end">
-                    {canResetPassword && (
-                        <Link
-                            href={route('password.request')}
-                            className="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                        >
-                            Forgot your password?
-                        </Link>
-                    )}
-
-                    <PrimaryButton className="ms-4" disabled={processing}>
-                        Log in
-                    </PrimaryButton>
-                </div>
-            </form>
+                </form>
+            </Card>
         </>
     );
 }

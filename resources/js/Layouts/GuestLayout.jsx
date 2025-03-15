@@ -1,6 +1,7 @@
 import { HiCommandLine } from "react-icons/hi2";
 import { IoMdSearch } from "react-icons/io";
 import { IoMdMenu } from "react-icons/io";
+import { RxCross1 } from "react-icons/rx";
 import clsx from "clsx";
 import { useState } from "react";
 import { Link, usePage } from "@inertiajs/react";
@@ -61,9 +62,16 @@ export default function GuestLayout({ children }) {
                     </ul>
 
                     {/* Menu Icon */}
-                    <IoMdMenu className='lg:hidden block text-5xl cursor-pointer'
-                        onClick={() => setIsMenuOpen(!isMenuOpen)}
-                    />
+                    {isMenuOpen ? (
+                        <RxCross1 className='lg:hidden block text-5xl cursor-pointer'
+                            onClick={() => setIsMenuOpen(!isMenuOpen)}
+                        />
+                    ) : (
+                        <IoMdMenu className='lg:hidden block text-5xl cursor-pointer'
+                            onClick={() => setIsMenuOpen(!isMenuOpen)}
+                        />
+                    )}
+
 
                     {/* dropdown */}
                     <div className={clsx(
@@ -101,8 +109,6 @@ export default function GuestLayout({ children }) {
                     </div>
                 </header>
                 <main className="text-[#94a1b2]">
-                    <div>URL: {url}</div>
-                    <div>Component: {component}</div>
                     {children}
                 </main>
             </div>

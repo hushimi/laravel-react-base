@@ -141,6 +141,14 @@ submitForm("/api/endpoint");
 8. login 前、login 後のリダイレクト設定(config/app.php)、Middleware の追加
 9. Mail の日本語化
 
+-   RemeberMe
+
+1. Remember Token: Laravel generates a unique remember_token for the user and stores it in the users table of your DB
+2. Persistent Login: A cookie is created and stored in the user's browser. This cookie contains an encrypted version
+   of the user's identifier and the remember_token.
+3. Automatic Authentication: When the session expires, Laravel checks the cookie to authenticate the user automatically
+   without requiring them to log in again.
+
 ## tailwind css class too long
 
 ```javascript
