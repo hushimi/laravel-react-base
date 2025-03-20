@@ -9,7 +9,7 @@ import { Button } from "@/Components/ui/button";
 
 export default function GuestLayout({ children }) {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
-    const { url, component } = usePage()
+    const { component } = usePage()
 
     return (
         <>

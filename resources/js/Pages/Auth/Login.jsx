@@ -46,21 +46,25 @@ const Login = ({ status, canResetPassword }) => {
                             <Input
                                 type="email"
                                 id="email"
-                                autoComplete="username"
+                                autoComplete="off"
                                 onChange={(e) => setData('email', e.target.value)}
                             />
-                            <InputError message={errors.email} className="mt-2" />
                         </div>
                         <div className="w-full lg:w-4/6 mx-auto mt-4">
                             <Label htmlFor="password">Password</Label>
                             <Input
                                 type="password"
                                 id="password"
-                                autoComplete="new-password"
+                                autoComplete="off"
                                 onChange={(e) => setData('password', e.target.value)}
                             />
-                            <InputError message={errors.password} className="mt-2" />
                         </div>
+                        {(errors.email || errors.password) && (
+                            <InputError
+                                message="ログインIDまたはパスワードが一致しません。"
+                                className="mt-2 w-full text-center"
+                            />
+                        )}
                     </CardContent>
 
                     <CardFooter className="w-full flex-col">
@@ -91,7 +95,6 @@ const Login = ({ status, canResetPassword }) => {
                             </div>
                         )}
                     </CardFooter>
-
                 </form>
             </Card>
         </>
@@ -99,5 +102,4 @@ const Login = ({ status, canResetPassword }) => {
 }
 
 Login.layout = (page) => <GuestLayout children={page} />
-
 export default Login;
