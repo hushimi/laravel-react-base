@@ -1,6 +1,8 @@
-import PrimaryButton from '@/Components/PrimaryButton';
+import { Head, useForm } from '@inertiajs/react';
+import { HiCommandLine } from "react-icons/hi2";
+import { Button } from "@/Components/ui/button";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { Head, Link, useForm } from '@inertiajs/react';
 
 const VerifyEmail = ({ status }) => {
     const { post, processing } = useForm({});
@@ -13,38 +15,39 @@ const VerifyEmail = ({ status }) => {
 
     return (
         <>
-            <Head title="Email Verification" />
+            <Head title="メール認証" />
 
-            <div className="mb-4 text-sm text-gray-600">
-                Thanks for signing up! Before getting started, could you verify
-                your email address by clicking on the link we just emailed to
-                you? If you didn't receive the email, we will gladly send you
-                another.
-            </div>
+            <Card className="mt-5 mx-auto border-none w-11/12 sm:w-3/5 bg-[#242629] text-[#94a1b2]">
+                <CardHeader>
+                    <CardTitle className="text-center text-[#fffffe] text-2xl">
+                        <h1 className='flex justify-center items-center'>
+                            <HiCommandLine size={25} />
+                            <span className="hidden md:block">
+                                LR-base
+                            </span>
+                        </h1>
+                    </CardTitle>
+                </CardHeader>
+                <form onSubmit={submit}>
+                    <CardContent>
+                        <p className='text-center'>
+                            認証メールを送信しました。メール内の確認リンクをクリックしてください。
+                        </p>
 
-            {status === 'verification-link-sent' && (
-                <div className="mb-4 text-sm font-medium text-green-600">
-                    A new verification link has been sent to the email address
-                    you provided during registration.
-                </div>
-            )}
+                    </CardContent>
 
-            <form onSubmit={submit}>
-                <div className="mt-4 flex items-center justify-between">
-                    <PrimaryButton disabled={processing}>
-                        Resend Verification Email
-                    </PrimaryButton>
-
-                    <Link
-                        href={route('logout')}
-                        method="post"
-                        as="button"
-                        className="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                    >
-                        Log Out
-                    </Link>
-                </div>
-            </form>
+                    <CardFooter className="w-full flex-col">
+                        {status === 'verification-link-sent' && (
+                            <div className="text-sm font-medium text-green-600 text-center">
+                                認証メール送信完了
+                            </div>
+                        )}
+                        <Button className="bg-[#7f5af0] mx-auto" disabled={processing}>
+                            メール再送信
+                        </Button>
+                    </CardFooter>
+                </form>
+            </Card>
         </>
     );
 }

@@ -1,10 +1,8 @@
-import { useState } from "react";
 import { Link, usePage } from "@inertiajs/react";
-import clsx from "clsx";
+import { FaUserAstronaut } from "react-icons/fa6";
 import { HiCommandLine } from "react-icons/hi2";
 import { IoMdSearch } from "react-icons/io";
-import { FaUserAstronaut } from "react-icons/fa6";
-import { Button } from "@/Components/ui/button";
+import { cn } from "@/lib/utils";
 import {
     DropdownMenu, DropdownMenuTrigger, DropdownMenuContent,
     DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator,
@@ -12,12 +10,11 @@ import {
 
 export default function AuthenticatedLayout({ children }) {
     const user = usePage().props.auth.user;
-    console.log(user);
 
     return (
         <>
             <div className="bg-[#16161a] w-full h-full absolute text-[#94a1b2]">
-                <header className={clsx(
+                <header className={cn(
                     'flex justify-between items-center',
                     'text-[#94a1b2] bg-[#242629] drop-shadow-md',
                     'py-1 px-2 h-15'
@@ -38,7 +35,7 @@ export default function AuthenticatedLayout({ children }) {
                             <div className="relative flex items-center justify-center gap-3 ml-10">
                                 <IoMdSearch className='absolute left-3 text-2xl text-gray-500' />
                                 <input type="text" placeholder='Search'
-                                    className={clsx(
+                                    className={cn(
                                         'py-2 pl-10 rounded-xl',
                                         'border-2 bg-[#16161a] border-none focus:outline-none'
                                     )}
@@ -48,6 +45,7 @@ export default function AuthenticatedLayout({ children }) {
 
                     </div>
 
+                    {/* user menu */}
                     {user.email_verified_at &&
                         <DropdownMenu>
                             <DropdownMenuTrigger className="focus:outline-none focus:bg-inherit text-3xl">

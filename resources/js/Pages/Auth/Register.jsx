@@ -1,6 +1,5 @@
 import GuestLayout from '@/Layouts/GuestLayout';
-import { cn } from "@/lib/utils";
-import { Head, Link, useForm } from '@inertiajs/react';
+import { Head, useForm } from '@inertiajs/react';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label";
