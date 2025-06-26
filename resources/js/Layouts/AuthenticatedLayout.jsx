@@ -1,4 +1,4 @@
-import { Link, usePage } from "@inertiajs/react";
+import { Link, usePage, useForm } from "@inertiajs/react";
 import { FaUserAstronaut } from "react-icons/fa6";
 import { HiCommandLine } from "react-icons/hi2";
 import { IoMdSearch } from "react-icons/io";
@@ -10,6 +10,12 @@ import {
 
 export default function AuthenticatedLayout({ children }) {
     const user = usePage().props.auth.user;
+    const { post } = useForm();
+
+    const submit = (e) => {
+        e.preventDefault();
+        post(route('logout'));
+    };
 
     return (
         <>
@@ -48,7 +54,7 @@ export default function AuthenticatedLayout({ children }) {
                     {/* user menu */}
                     {user.email_verified_at &&
                         <DropdownMenu>
-                            <DropdownMenuTrigger className="focus:outline-none focus:bg-inherit text-3xl">
+                            <DropdownMenuTrigger className="focus:outline-none focus:bg-inherit focus:ring-0 focus:border-none text-3xl">
                                 <FaUserAstronaut className="mr-4" />
                             </DropdownMenuTrigger>
                             <DropdownMenuContent
@@ -60,7 +66,9 @@ export default function AuthenticatedLayout({ children }) {
                                     <Link href={route('profile.edit')}>Profile</Link>
                                 </DropdownMenuItem>
                                 <DropdownMenuItem className="cursor-pointer hover:bg-[#242629]">
-                                    <Link href={route('logout')}>Logout</Link>
+                                    <form onSubmit={submit}>
+                                        <button type="submit" className="w-full text-left bg-transparent border-none p-0 m-0 cursor-pointer">Logout</button>
+                                    </form>
                                 </DropdownMenuItem>
                             </DropdownMenuContent>
                         </DropdownMenu>

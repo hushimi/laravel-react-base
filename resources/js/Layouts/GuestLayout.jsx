@@ -45,19 +45,21 @@ export default function GuestLayout({ children }) {
                     {/* Nav menu */}
                     <ul className='hidden lg:flex items-center gap-3 font-semibold text-base mr-3'>
                         <li className={clsx({ 'hidden': component == 'Auth/Login' })}>
-                            <Button size="sm" className="hover:bg-[#464444]">
-                                <Link href={route('login')}>
-                                    Login
-                                </Link>
-                            </Button>
+                            <Link
+                                href={route('login')}
+                                className="inline-block px-4 py-2 rounded bg-transparent hover:bg-[#464444] text-inherit transition-colors"
+                            >
+                                Login
+                            </Link>
                         </li>
 
                         <li className={clsx({ 'hidden': component == 'Auth/Register' })}>
-                            <Button size="sm" className="bg-[#2cb67d] hover:bg-[#198a5b]">
-                                <Link href={route('register')}>
-                                    Sign Up
-                                </Link>
-                            </Button>
+                            <Link
+                                href={route('register')}
+                                className="inline-block px-4 py-2 rounded bg-[#2cb67d] hover:bg-[#198a5b] text-[#16161a] font-bold transition-colors"
+                            >
+                                Sign Up
+                            </Link>
                         </li>
                     </ul>
 
