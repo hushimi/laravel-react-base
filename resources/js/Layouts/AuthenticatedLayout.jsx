@@ -21,6 +21,7 @@ export default function AuthenticatedLayout({ children }) {
         <>
             <div className="bg-[#16161a] w-full h-full absolute text-[#94a1b2]">
                 <header className={cn(
+                    'relative',
                     'flex justify-between items-center',
                     'text-[#94a1b2] bg-[#242629] drop-shadow-md',
                     'py-1 px-2 h-15'
@@ -58,6 +59,7 @@ export default function AuthenticatedLayout({ children }) {
                                 <FaUserAstronaut className="mr-4" />
                             </DropdownMenuTrigger>
                             <DropdownMenuContent
+                                sideOffset={0}
                                 className="bg-[#16161a] text-[#94a1b2] border-none mr-3"
                             >
                                 <DropdownMenuLabel>{user.name}</DropdownMenuLabel>

@@ -9,7 +9,7 @@ Route::get('/', [TopController::class, 'index'])
     ->name('root');
 
 // users認証
-require __DIR__.'/auth.php';
+require __DIR__.'/user.php';
 
 // admins認証
 Route::prefix('admin')->name('admin.')->group(function(){

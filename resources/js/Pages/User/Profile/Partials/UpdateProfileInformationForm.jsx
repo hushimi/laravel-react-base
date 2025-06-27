@@ -38,7 +38,7 @@ export default function UpdateProfileInformation({
 
             <form onSubmit={submit} className="mt-6 space-y-6">
                 <div>
-                    <InputLabel htmlFor="name" value="Name" className="text-[#bfc0c0]" />
+                    <InputLabel htmlFor="name" value="Name" className="text-[#fffffe]" />
 
                     <TextInput
                         id="name"
@@ -54,7 +54,7 @@ export default function UpdateProfileInformation({
                 </div>
 
                 <div>
-                    <InputLabel htmlFor="email" value="Email" className="text-[#bfc0c0]" />
+                    <InputLabel htmlFor="email" value="Email" className="text-[#fffffe]" />
 
                     <TextInput
                         id="email"

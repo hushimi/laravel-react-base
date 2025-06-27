@@ -81,7 +81,7 @@ export default function DeleteUserForm({ className = '' }) {
                         <InputLabel
                             htmlFor="password"
                             value="Password"
-                            className="sr-only text-[#bfc0c0]"
+                            className="sr-only text-[#fffffe]"
                         />
 
                         <TextInput
