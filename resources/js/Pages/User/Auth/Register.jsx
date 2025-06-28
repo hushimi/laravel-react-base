@@ -26,16 +26,16 @@ const Register = () => {
         <>
             <Head title="Register" />
 
-            <Card className="mt-5 mx-auto border-none w-11/12 sm:w-3/5 bg-[#242629] text-[#94a1b2]">
+            <Card className="my-8 mx-auto border-none w-11/12 sm:w-2/5 lg:w-1/3 bg-[#242629] text-[#94a1b2]">
                 <CardHeader>
-                    <CardTitle className="text-center text-[#fffffe] text-3xl">
+                    <CardTitle className="text-center text-[#fffffe] text-xl">
                         Sign Up
                     </CardTitle>
                 </CardHeader>
                 <form onSubmit={submit}>
                     <CardContent>
                         {/* name */}
-                        <div className="w-full lg:w-4/6 mx-auto">
+                        <div className="w-full mx-auto">
                             <Label htmlFor="name">Name</Label>
                             <Input
                                 id="name"
@@ -43,12 +43,13 @@ const Register = () => {
                                 type="text"
                                 value={data.name}
                                 autoComplete="off"
+                                className="h-8 text-sm py-1"
                                 onChange={(e) => setData('name', e.target.value)}
                             />
                             <InputError message={errors.name} className="mt-2" />
                         </div>
                         {/* email */}
-                        <div className="w-full lg:w-4/6 mx-auto mt-3">
+                        <div className="w-full mx-auto mt-3">
                             <Label htmlFor="email">Email</Label>
                             <Input
                                 id="email"
@@ -56,12 +57,13 @@ const Register = () => {
                                 type="email"
                                 value={data.email}
                                 autoComplete="off"
+                                className="h-8 text-sm py-1"
                                 onChange={(e) => setData('email', e.target.value)}
                             />
                             <InputError message={errors.email} className="mt-2" />
                         </div>
                         {/* password */}
-                        <div className="w-full lg:w-4/6 mx-auto mt-3">
+                        <div className="w-full mx-auto mt-3">
                             <Label htmlFor="password">Password</Label>
                             <Input
                                 id="password"
@@ -69,11 +71,12 @@ const Register = () => {
                                 type="password"
                                 value={data.password}
                                 autoComplete="off"
+                                className="h-8 text-sm py-1"
                                 onChange={(e) => setData('password', e.target.value)}
                             />
                             <InputError message={errors.password} className="mt-2" />
                         </div>
-                        <div className="w-full lg:w-4/6 mx-auto mt-3">
+                        <div className="w-full mx-auto mt-3">
                             <Label htmlFor="password_confirmation">Confirm Password</Label>
                             <Input
                                 id="password_confirmation"
@@ -81,6 +84,7 @@ const Register = () => {
                                 type="password"
                                 value={data.password_confirmation}
                                 autoComplete="off"
+                                className="h-8 text-sm py-1"
                                 onChange={(e) => setData('password_confirmation', e.target.value)}
                             />
                         </div>

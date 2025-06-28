@@ -6,6 +6,7 @@ use Illuminate\Auth\Notifications\VerifyEmail as BaseVerifyEmail;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Notifications\Messages\MailMessage;
 
 class CustomVerifyEmail extends BaseVerifyEmail
 {
@@ -28,5 +29,21 @@ class CustomVerifyEmail extends BaseVerifyEmail
                 'hash' => sha1($notifiable->getEmailForVerification()),
             ]
         );
+    }
+
+    /**
+     * Get the mail representation of the notification.
+     *
+     * @param  mixed  $notifiable
+     * @return \Illuminate\Notifications\Messages\MailMessage
+     */
+    public function toMail($notifiable)
+    {
+        $url = $this->verificationUrl($notifiable);
+        return (new MailMessage)
+            ->subject('メールアドレス認証のお知らせ')
+            ->view('emails.email_verification', [
+                'url' => $url,
+            ]);
     }
 }

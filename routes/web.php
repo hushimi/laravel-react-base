@@ -2,16 +2,14 @@
 
 use App\Http\Controllers\TopController;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 // Topページ
-Route::get('/', [TopController::class, 'index'])
-    ->name('root');
+Route::get('/', [TopController::class, 'index'])->name('root');
 
-// users認証
+// user routes
 require __DIR__.'/user.php';
 
-// admins認証
+// admin routes
 Route::prefix('admin')->name('admin.')->group(function(){
     require __DIR__.'/admin.php';
 });
