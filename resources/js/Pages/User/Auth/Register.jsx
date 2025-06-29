@@ -24,19 +24,19 @@ const Register = () => {
 
     return (
         <>
-            <Head title="Register" />
+            <Head title="Sign up" />
 
-            <Card className="my-8 mx-auto border-none w-11/12 sm:w-2/5 lg:w-1/3 bg-[#242629] text-[#94a1b2]">
+            <Card className="my-5 mx-auto border-none w-11/12 sm:w-2/5 lg:w-1/3 bg-[#242629] text-[#94a1b2]">
                 <CardHeader>
                     <CardTitle className="text-center text-[#fffffe] text-xl">
-                        Sign Up
+                        Sign up
                     </CardTitle>
                 </CardHeader>
                 <form onSubmit={submit}>
                     <CardContent>
                         {/* name */}
                         <div className="w-full mx-auto">
-                            <Label htmlFor="name">Name</Label>
+                            <Label htmlFor="name">名前</Label>
                             <Input
                                 id="name"
                                 name="name"
@@ -50,7 +50,7 @@ const Register = () => {
                         </div>
                         {/* email */}
                         <div className="w-full mx-auto mt-3">
-                            <Label htmlFor="email">Email</Label>
+                            <Label htmlFor="email">メールアドレス</Label>
                             <Input
                                 id="email"
                                 name="email"
@@ -64,7 +64,7 @@ const Register = () => {
                         </div>
                         {/* password */}
                         <div className="w-full mx-auto mt-3">
-                            <Label htmlFor="password">Password</Label>
+                            <Label htmlFor="password">パスワード</Label>
                             <Input
                                 id="password"
                                 name="password"
@@ -77,7 +77,7 @@ const Register = () => {
                             <InputError message={errors.password} className="mt-2" />
                         </div>
                         <div className="w-full mx-auto mt-3">
-                            <Label htmlFor="password_confirmation">Confirm Password</Label>
+                            <Label htmlFor="password_confirmation">パスワード(確認)</Label>
                             <Input
                                 id="password_confirmation"
                                 name="password_confirmation"

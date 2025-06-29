@@ -1,7 +1,7 @@
 import InputError from '@/Components/InputError';
-import InputLabel from '@/Components/InputLabel';
-import PrimaryButton from '@/Components/PrimaryButton';
-import TextInput from '@/Components/TextInput';
+import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/Components/ui/button';
 import { Transition } from '@headlessui/react';
 import { Link, useForm, usePage } from '@inertiajs/react';
 
@@ -28,72 +28,69 @@ export default function UpdateProfileInformation({
         <section className={className}>
             <header>
                 <h2 className="text-lg font-medium text-[#fffffe]">
-                    Profile Information
+                    プロフィール情報
                 </h2>
 
                 <p className="mt-1 text-sm text-[#bfc0c0]">
-                    Update your account's profile information and email address.
+                    アカウントのプロフィール情報とメールアドレスを更新できます。
                 </p>
             </header>
 
             <form onSubmit={submit} className="mt-6 space-y-6">
                 <div>
-                    <InputLabel htmlFor="name" value="Name" className="text-[#fffffe]" />
-
-                    <TextInput
+                    <Label htmlFor="name">名前</Label>
+                    <Input
                         id="name"
-                        className="mt-1 block w-full text-[#22223b]"
+                        name="name"
+                        type="text"
+                        className="h-8 text-sm py-1 mt-1 block w-full"
                         value={data.name}
+                        autoComplete="off"
                         onChange={(e) => setData('name', e.target.value)}
                         required
-                        isFocused
-                        autoComplete="name"
                     />
-
                     <InputError className="mt-2" message={errors.name} />
                 </div>
 
                 <div>
-                    <InputLabel htmlFor="email" value="Email" className="text-[#fffffe]" />
-
-                    <TextInput
+                    <Label htmlFor="email">メールアドレス</Label>
+                    <Input
                         id="email"
+                        name="email"
                         type="email"
-                        className="mt-1 block w-full text-[#22223b]"
+                        className="h-8 text-sm py-1 mt-1 block w-full"
                         value={data.email}
+                        autoComplete="off"
                         onChange={(e) => setData('email', e.target.value)}
                         required
-                        autoComplete="username"
                     />
-
                     <InputError className="mt-2" message={errors.email} />
                 </div>
 
                 {mustVerifyEmail && user.email_verified_at === null && (
                     <div>
                         <p className="mt-2 text-sm text-[#bfc0c0]">
-                            Your email address is unverified.
+                            メールアドレスが未認証です。
                             <Link
                                 href={route('verification.send')}
                                 method="post"
                                 as="button"
                                 className="rounded-md text-sm text-[#bfc0c0] underline hover:text-[#fffffe] focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                             >
-                                Click here to re-send the verification email.
+                                認証メールを再送するにはこちらをクリックしてください。
                             </Link>
                         </p>
 
                         {status === 'verification-link-sent' && (
                             <div className="mt-2 text-sm font-medium text-green-600">
-                                A new verification link has been sent to your
-                                email address.
+                                新しい認証リンクをメールアドレスに送信しました。
                             </div>
                         )}
                     </div>
                 )}
 
                 <div className="flex items-center gap-4">
-                    <PrimaryButton disabled={processing}>Save</PrimaryButton>
+                    <Button className="bg-[#7f5af0]" disabled={processing}>Save</Button>
 
                     <Transition
                         show={recentlySuccessful}
@@ -103,7 +100,7 @@ export default function UpdateProfileInformation({
                         leaveTo="opacity-0"
                     >
                         <p className="text-sm text-[#bfc0c0]">
-                            Saved.
+                            保存しました。
                         </p>
                     </Transition>
                 </div>

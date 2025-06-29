@@ -50,7 +50,7 @@ export default function GuestLayout({ children }) {
                             <Link
                                 href={route('login')}
                                 className={cn(
-                                    "inline-block px-4 py-2 rounded",
+                                    "inline-block p-1 rounded",
                                     "bg-transparent hover:bg-[#464444]",
                                     "text-inherit transition-colors"
                                 )}
@@ -63,7 +63,7 @@ export default function GuestLayout({ children }) {
                             <Link
                                 href={route('register')}
                                 className={cn(
-                                    "inline-block px-4 py-2 rounded",
+                                    "inline-block p-1 rounded",
                                     "bg-[#2cb67d] hover:bg-[#198a5b]",
                                     "text-[#16161a] font-bold transition-colors"
                                 )}
@@ -101,7 +101,7 @@ export default function GuestLayout({ children }) {
                     )}
                         style={{ transition: "transform 0.3s ease, opacity 0.3s ease", top: '40px' }}>
                         <li className={cn(
-                            'w-full p-3',
+                            'w-full p-1',
                             'text-center list-none cursor-pointer',
                             { 'hidden': component == 'Auth/Login' },
                         )}>
@@ -111,7 +111,7 @@ export default function GuestLayout({ children }) {
                         </li>
 
                         <li className={cn(
-                            'w-full p-3',
+                            'w-full p-1',
                             'text-center list-none cursor-pointer',
                             { 'hidden': component == 'Auth/Register' },
                         )}>

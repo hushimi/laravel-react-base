@@ -1,7 +1,7 @@
 import InputError from '@/Components/InputError';
-import InputLabel from '@/Components/InputLabel';
-import PrimaryButton from '@/Components/PrimaryButton';
-import TextInput from '@/Components/TextInput';
+import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/Components/ui/button';
 import { Transition } from '@headlessui/react';
 import { useForm } from '@inertiajs/react';
 import { useRef } from 'react';
@@ -48,35 +48,27 @@ export default function UpdatePasswordForm({ className = '' }) {
         <section className={className}>
             <header>
                 <h2 className="text-lg font-medium text-[#fffffe]">
-                    Update Password
+                    パスワードの更新
                 </h2>
 
                 <p className="mt-1 text-sm text-[#bfc0c0]">
-                    Ensure your account is using a long, random password to stay
-                    secure.
+                    アカウントの安全のため、長くてランダムなパスワードを設定してください。
                 </p>
             </header>
 
             <form onSubmit={updatePassword} className="mt-6 space-y-6">
                 <div>
-                    <InputLabel
-                        htmlFor="current_password"
-                        value="Current Password"
-                        className="text-[#fffffe]"
-                    />
-
-                    <TextInput
+                    <Label htmlFor="current_password">現在のパスワード</Label>
+                    <Input
                         id="current_password"
+                        name="current_password"
+                        type="password"
+                        className="h-8 text-sm py-1 mt-1 block w-full"
                         ref={currentPasswordInput}
                         value={data.current_password}
-                        onChange={(e) =>
-                            setData('current_password', e.target.value)
-                        }
-                        type="password"
-                        className="mt-1 block w-full text-[#22223b]"
-                        autoComplete="current-password"
+                        autoComplete="off"
+                        onChange={(e) => setData('current_password', e.target.value)}
                     />
-
                     <InputError
                         message={errors.current_password}
                         className="mt-2"
@@ -84,39 +76,31 @@ export default function UpdatePasswordForm({ className = '' }) {
                 </div>
 
                 <div>
-                    <InputLabel htmlFor="password" value="New Password" className="text-[#fffffe]" />
-
-                    <TextInput
+                    <Label htmlFor="password">新しいパスワード</Label>
+                    <Input
                         id="password"
+                        name="password"
+                        type="password"
+                        className="h-8 text-sm py-1 mt-1 block w-full"
                         ref={passwordInput}
                         value={data.password}
+                        autoComplete="off"
                         onChange={(e) => setData('password', e.target.value)}
-                        type="password"
-                        className="mt-1 block w-full text-[#22223b]"
-                        autoComplete="new-password"
                     />
-
                     <InputError message={errors.password} className="mt-2" />
                 </div>
 
                 <div>
-                    <InputLabel
-                        htmlFor="password_confirmation"
-                        value="Confirm Password"
-                        className="text-[#fffffe]"
-                    />
-
-                    <TextInput
+                    <Label htmlFor="password_confirmation">パスワード（確認）</Label>
+                    <Input
                         id="password_confirmation"
-                        value={data.password_confirmation}
-                        onChange={(e) =>
-                            setData('password_confirmation', e.target.value)
-                        }
+                        name="password_confirmation"
                         type="password"
-                        className="mt-1 block w-full text-[#22223b]"
-                        autoComplete="new-password"
+                        className="h-8 text-sm py-1 mt-1 block w-full"
+                        value={data.password_confirmation}
+                        autoComplete="off"
+                        onChange={(e) => setData('password_confirmation', e.target.value)}
                     />
-
                     <InputError
                         message={errors.password_confirmation}
                         className="mt-2"
@@ -124,7 +108,7 @@ export default function UpdatePasswordForm({ className = '' }) {
                 </div>
 
                 <div className="flex items-center gap-4">
-                    <PrimaryButton disabled={processing}>Save</PrimaryButton>
+                    <Button className="bg-[#7f5af0]" disabled={processing}>Save</Button>
 
                     <Transition
                         show={recentlySuccessful}
@@ -134,7 +118,7 @@ export default function UpdatePasswordForm({ className = '' }) {
                         leaveTo="opacity-0"
                     >
                         <p className="text-sm text-[#bfc0c0]">
-                            Saved.
+                            保存しました。
                         </p>
                     </Transition>
                 </div>

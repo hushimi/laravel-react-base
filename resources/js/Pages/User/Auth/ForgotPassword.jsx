@@ -18,7 +18,7 @@ export default function ForgotPassword({ status }) {
 
     return (
         <GuestLayout>
-            <Head title="Forgot Password" />
+            <Head title="Reset Password" />
 
             {status && (
                 <div className="mb-4 text-sm font-medium text-green-600 text-center">
@@ -29,16 +29,16 @@ export default function ForgotPassword({ status }) {
             <Card className="mt-5 mx-auto border-none w-11/12 sm:w-3/5 bg-[#242629] text-[#94a1b2]">
                 <CardHeader>
                     <CardTitle className="text-center text-[#fffffe] text-3xl">
-                        Forgot Password
+                        Reset Password
                     </CardTitle>
                     <div className="text-sm text-gray-400 mt-2 text-center">
-                        Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.
+                        パスワードをお忘れですか？ご心配なく。メールアドレスを入力していただければ、パスワード再設定用のリンクをお送りします。
                     </div>
                 </CardHeader>
                 <form onSubmit={submit}>
                     <CardContent>
                         <div className="w-full lg:w-4/6 mx-auto">
-                            <Label htmlFor="email">Email</Label>
+                            <Label htmlFor="email">メールアドレス</Label>
                             <Input
                                 id="email"
                                 name="email"

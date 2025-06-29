@@ -15,7 +15,7 @@ export default function Edit({ mustVerifyEmail, status }) {
             }
         >
             <Head title="Profile" />
-            <Card className="mt-5 mx-auto border-none w-11/12 sm:w-3/5 bg-[#242629] text-[#94a1b2]">
+            <Card className="my-8 mx-auto border-none w-11/12 sm:w-2/5 lg:w-1/3 bg-[#242629] text-[#94a1b2]">
                 <CardHeader>
                     <CardTitle className="text-center text-[#fffffe] text-3xl">
                         Profile
